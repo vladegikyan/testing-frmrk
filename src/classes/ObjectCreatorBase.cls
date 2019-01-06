@@ -18,7 +18,7 @@ public virtual class ObjectCreatorBase implements IsObjectCreator {
 	//constructor - initialize soType
 	public ObjectCreatorBase(String objectName) {
 		this.obj_name = objectName;
-		this.soType = SchemaHelper.GetSObjectType(objectName);
+		this.soType = Schema.getGlobalDescribe().get(objectName);
 	}
 	
 	/**
@@ -47,48 +47,4 @@ public virtual class ObjectCreatorBase implements IsObjectCreator {
 
 		return lst_so;
 	}
-
-	/**
-	 * Implements IsObjectCreator method. Method can be overriden
-	 * Creates instance of SObjectType using Schema.SObjectType.newSobject() method
-	 * with RecordTypeId of input recordType
-	 * @param String recordType
-	 * @return SObject instance with no fields defined, except RecordTypeId.
-	 * You may want to atomatically assign default values of the object's fields, then use true as
-	 * second parameter for newSobject() method
-	 */
-	public virtual sObject createSO(String recordType) {
-
-		String rtId = SchemaHelper.GetRecordTypeId(this.obj_name, recordType);
-		SObject so = (String.isNotBlank(rtId)) ? this.soType.newSObject(rtId, false) : this.soType.newSobject();
-		
-		return so;
-	}
-
-	/**
-	 * Implements IsObjectCreator method. Method can be overriden
-	 * Creates list of instances of SObjectType using Schema.SObjectType.newSobject() method
-	 * with RecordTypeId of input recordType
-	 * @param String recordType
-	 * @param Integer num - number of instances to create
-	 * @return SObject instances with no fields defined, except RecordTypeId.
-	 * You may want to atomatically assign default values of the object's fields, then use true as
-	 * second parameter for newSobject() method
-	 */
-	public virtual List<sObject> createSO(String recordType, Integer num) {
-		List<sObject> lst_so = new List<sObject>();
-		String rtId = SchemaHelper.GetRecordTypeId(this.obj_name, recordType);
-		
-		for(Integer i = 0; i < num; i++) {
-			if(String.isNotBlank(rtId)) {
-				lst_so.add(this.soType.newSObject(rtId, false));
-			}
-			else {
-				lst_so.add(this.soType.newSObject());
-			}
-		}
-
-		return lst_so;
-	}
-
 }

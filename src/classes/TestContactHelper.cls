@@ -8,14 +8,7 @@ private class TestContactHelper {
 
 		List<SObject> so_lst = ContactHelper.create(5);
 		system.assertEquals(5, so_lst.size());
-		//system.assertEquals(Account.sObjectType, so_lst.getSObjectType());
-
-		so = ContactHelper.create('RecordType');
-		system.assertEquals(Contact.sObjectType, so.getSObjectType());
-
-		so_lst = ContactHelper.create('RecordType', 5);
-		system.assertEquals(5, so_lst.size());
-
+		
 		Account acc = AccountHelper.create();
 		acc.Name = 'Account Name';
 		insert acc;

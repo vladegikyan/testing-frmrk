@@ -25,15 +25,4 @@ public with sharing class AccountHelper {
 		// assign required fields
 		return lst_acc;
 	}
-
-	public static Account create(String recordType) {
-		Account acc = (Account) creator.createSO(recordType);
-		return acc;
-	}
-
-	public static List<Account> create(String recordType, Integer num) {
-		List<Account> lst_acc = (List<Account>) creator.createSO(recordType, num);
-		// assign required fields
-		return lst_acc;
-	}
 }

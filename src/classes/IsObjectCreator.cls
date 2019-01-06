@@ -8,6 +8,4 @@ public interface IsObjectCreator {
 
 	sObject createSO();
 	List<sObject> createSO(Integer num);
-	sObject createSO(String recordType);
-	List<sObject> createSO(String recordType, Integer num);
 }

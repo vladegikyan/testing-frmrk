@@ -22,16 +22,6 @@ public with sharing class ContactHelper {
 		return lst_con;
 	}
 
-	public static Contact create(String recordType) {
-		Contact con = (Contact) creator.createSO(recordType);
-		return con;
-	}
-
-	public static List<Contact> create(String recordType, Integer num) {
-		List<Contact> lst_con = (List<Contact>) creator.createSO(recordType, num);
-		return lst_con;
-	}
-
 	/**
 	* Create contact related to account
 	* @param Account master to assign as parent Account

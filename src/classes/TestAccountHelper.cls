@@ -8,12 +8,5 @@ private class TestAccountHelper {
 
 		List<SObject> so_lst = AccountHelper.create(5);
 		system.assertEquals(5, so_lst.size());
-		//system.assertEquals(Account.sObjectType, so_lst.getSObjectType());
-
-		so = AccountHelper.create('RecordType');
-		system.assertEquals(Account.sObjectType, so.getSObjectType());
-
-		so_lst = AccountHelper.create('RecordType', 5);
-		system.assertEquals(5, so_lst.size());
 	}
 }
